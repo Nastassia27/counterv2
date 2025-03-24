@@ -1,0 +1,53 @@
+/* 3. First component inside the second div */
+.set-numbers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    border: 2px solid pink;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(255, 105, 180, 0.4);
+    background-color: #fad6e0;
+    width: 250px; /* Ensures both have the same width */
+    min-height: 180px; /* Ensures both have the same height */
+    flex-grow: 1;
+}
+
+/* Input styles */
+.set-numbers-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+}
+.set-numbers-error-input {
+    padding: 8px;
+    border: 1px solid red !important;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    color: red;
+}
+
+/* Button styling */
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #fa7dad;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(255, 105, 180, 0.5);
+}
+
+/* Disabled button */
+button:disabled {
+    background-color: #b5b1b1;
+    cursor: not-allowed;
+    box-shadow: none;
+}

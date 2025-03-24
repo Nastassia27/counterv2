@@ -1,0 +1,41 @@
+.show-results {
+    box-shadow: 0px 4px 6px rgba(128, 128, 128, 0.4);
+    background-color: #ececec;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px; /* Ensures both have the same width */
+    min-height: 180px; /* Ensures both have the same height */
+    flex-grow: 1;
+    border: 2px solid gray;
+}
+
+.show-results-numbers {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px; /* Reduce bottom margin */
+}
+
+/* Buttons container */
+.show-results-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+    width: 100%; /* Ensures buttons stay centered */
+}
+
+.show-results-max {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px; /* Reduce bottom margin */
+    color: red;
+}
+

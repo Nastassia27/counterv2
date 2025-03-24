@@ -1,0 +1,13 @@
+/* 1. The main screen with background color */
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3f3f3; /* Light gray background */
+}
+
+
+
+
+
