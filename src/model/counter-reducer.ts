@@ -1,6 +1,6 @@
 import {createAction, createReducer} from "@reduxjs/toolkit";
 
-type initialStateType = {
+export type initialStateType = {
     startValue: number,
     startValueFix: number,
     maxValue: number,

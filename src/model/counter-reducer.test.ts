@@ -69,7 +69,7 @@ test('set number', () => {
 })
 
 test('increase value', () => {
-    const newValue = endState.resultValue + 1
+    const newValue = startState.resultValue + 1
     const endState = counterReducer(startState, increaseValueAC())
 
     expect(endState).toEqual({
