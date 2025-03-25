@@ -11,14 +11,16 @@ import {
     resetValueAC,
     setNumbersAC
 } from "../../model/counter-reducer";
+import {useAppDispatch} from "../../common/hooks/useAppDispatch";
+import {useAppSelector} from "../../common/hooks/useAppSelector";
 
 
 const Counter = () => {
    /* const todolists = useSelector<RootState, Todolist[]>(state => state.todolists)
     const tasks = useSelector<RootState, TasksState>(state => state.tasks)*/
 
-    const counter = useSelector<RootState>(state => state.counter);
-    const dispatch = useDispatch()
+    const counter = useAppSelector(state => state.counter);
+    const dispatch = useAppDispatch()
     /*const [startValue, setStartValue] = React.useState<number>(0);
     const [startValueFix, setStartValueFix] = React.useState<number>(0);
 
