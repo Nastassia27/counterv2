@@ -1,4 +1,11 @@
-import {changeMaxValueAC, changeStartValueAC, counterReducer} from "./counter-reducer";
+import {
+    changeMaxValueAC,
+    changeStartValueAC,
+    counterReducer,
+    increaseValueAC,
+    initialStateType, resetValueAC,
+    setNumbersAC
+} from "./counter-reducer";
 
 export let startState: initialStateType = {
     startValue: 0,
@@ -17,7 +24,8 @@ beforeEach(() => {
         maxValueFix: 0,
         resultValue: 0,
         isClicked: false
-}})
+    }
+})
 
 test('change max value', () => {
     const endState = counterReducer(startState, changeMaxValueAC({number: 2}))
@@ -44,100 +52,41 @@ test('change start value', () => {
         isClicked: false
     })
 })
-
-/*
-import { beforeEach, expect, test } from 'vitest'
-import type {TasksState} from '../app/App'
-import {
-    changeTaskStatusAC, changeTaskTitleAC,
-    createTaskAC,
-    deleteTaskAC,
-    tasksReducer
-} from './tasks-reducer'
-import {createTodolistAC, deleteTodolistAC} from './todolists-reducer'
-
-let startState: TasksState = {}
-
-beforeEach(() => {
-    startState = {
-        todolistId1: [
-            {id: '1', title: 'CSS', isDone: false},
-            {id: '2', title: 'JS', isDone: true},
-            {id: '3', title: 'React', isDone: false},
-        ],
-        todolistId2: [
-            {id: '1', title: 'bread', isDone: false},
-            {id: '2', title: 'milk', isDone: true},
-            {id: '3', title: 'tea', isDone: false},
-        ],
-    }
-})
-
-
-test('correct task should be deleted', () => {
-    const endState = tasksReducer(startState, deleteTaskAC({todolistId: 'todolistId2', taskId: '2'}))
-
+test('set number', () => {
+    const endState = counterReducer(startState, setNumbersAC())
+    let maxNew = 5
+    let startNew = 6
     expect(endState).toEqual({
-        todolistId1: [
-            { id: '1', title: 'CSS', isDone: false },
-            { id: '2', title: 'JS', isDone: true },
-            { id: '3', title: 'React', isDone: false },
-        ],
-        todolistId2: [
-            { id: '1', title: 'bread', isDone: false },
-            { id: '3', title: 'tea', isDone: false },
-        ],
+        startValue: startNew,
+        startValueFix: startNew,
+        maxValue: maxNew,
+        maxValueFix: maxNew,
+        resultValue: 0,
+        isClicked: true
     })
 })
 
-test('correct task should be created at correct array', () => {
-    const endState = tasksReducer(startState, createTaskAC({
-        todolistId: 'todolistId2',
-        title: 'juice'
-    }))
-
-    expect(endState.todolistId1.length).toBe(3)
-    expect(endState.todolistId2.length).toBe(4)
-    expect(endState.todolistId2[0].id).toBeDefined()
-    expect(endState.todolistId2[0].title).toBe('juice')
-    expect(endState.todolistId2[0].isDone).toBe(false)
+test('increase value', () => {
+    const endState = counterReducer(startState, increaseValueAC())
+    const newValue = endState.resultValue + 1
+    expect(endState).toEqual({
+        startValue: 0,
+        startValueFix: 0,
+        maxValue: 0,
+        maxValueFix: 0,
+        resultValue: newValue,
+        isClicked: false
+    })
+    expect(endState.isClicked).not.toBe(true)
+    expect(endState.resultValue).toBe(1)
 })
 
-test('correct task should change its status', () => {
-    const endState = tasksReducer(startState, changeTaskStatusAC({todolistId: 'todolistId2', taskId: '2', isDone: false}))
+test('reset value', () => {
+    const endState = counterReducer(startState, resetValueAC())
 
-    expect(endState.todolistId2[1].isDone).toBe(false)
-    expect(endState.todolistId1[1].isDone).toBe(true)
+    endState.startValueFix=5
+    expect(endState.isClicked).not.toBe(false)
+    expect(endState.startValueFix).toBe(5)
+    expect(endState.resultValue).toBe(5)
 })
 
-test('correct task should change its title', () => {
-    const endState = tasksReducer(startState, changeTaskTitleAC({todolistId: 'todolistId2', taskId: '2', title: 'coffee'}))
-
-    expect(endState.todolistId2[1].title).toBe('coffee')
-    expect(endState.todolistId1[1].title).toBe('JS')
-})
-
-test('array should be created for new todolist', () => {
-    const endState = tasksReducer(startState, createTodolistAC('New todolist'))
-
-    const keys = Object.keys(endState)
-    const newKey = keys.find(k => k !== 'todolistId1' && k !== 'todolistId2')
-    if (!newKey) {
-        throw Error('New key should be added')
-    }
-
-    expect(keys.length).toBe(3)
-    expect(endState[newKey]).toEqual([])
-})
-
-test('property with todolistId should be deleted', () => {
-    const endState = tasksReducer(startState, deleteTodolistAC({id: 'todolistId2'}))
-
-    const keys = Object.keys(endState)
-
-    expect(keys.length).toBe(1)
-    expect(endState['todolistId2']).not.toBeDefined()
-    // or
-    expect(endState['todolistId2']).toBeUndefined()
-})
-*/
