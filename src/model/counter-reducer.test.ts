@@ -85,11 +85,11 @@ test('increase value', () => {
 })
 
 test('reset value', () => {
-    endState.startValueFix=5
+    startState.startValueFix=5
     const endState = counterReducer(startState, resetValueAC())
 
 
-    expect(endState.isClicked).not.toBe(false)
+    expect(endState.isClicked).not.toBe(true)
     expect(endState.startValueFix).toBe(5)
     expect(endState.resultValue).toBe(5)
 })
