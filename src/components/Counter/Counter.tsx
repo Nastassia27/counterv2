@@ -13,11 +13,12 @@ import {
 } from "../../model/counter-reducer";
 import {useAppDispatch} from "../../common/hooks/useAppDispatch";
 import {useAppSelector} from "../../common/hooks/useAppSelector";
+import {selectCounterValues} from "../../model/counter-selectors";
 
 
 const Counter = () => {
 
-    const counter = useAppSelector(state => state.counter);
+    const counter = useAppSelector(selectCounterValues);
     const dispatch = useAppDispatch()
 
    /* useEffect(() => {
