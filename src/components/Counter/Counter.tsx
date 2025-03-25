@@ -73,20 +73,20 @@ const Counter = () => {
     }
     return (
         <div className="container">
-            <SetValues maxValue={maxValue}
-                       startValue={startValue}
+            <SetValues maxValue={counter.maxValue}
+                       startValue={counter.startValue}
                        changeMaxValue={onChangeMaxValueHandler}
                        changeStartValue={onChangeStartValueHandler}
                        setNumbers={setNumbersHandler}
-                       isClicked={isClicked}
+                       isClicked={counter.isClicked}
 
             />
-            <ShowResults resultValue={resultValue}
+            <ShowResults resultValue={counter.resultValue}
                          increaseValue={increaseValueHandler}
                          resetValue={resetValueHandler}
-                         maxValue={maxValue}
-                         startValue={startValue}
-                         isClicked={isClicked}
+                         maxValue={counter.maxValue}
+                         startValue={counter.startValue}
+                         isClicked={counter.isClicked}
             />
         </div>
     );
