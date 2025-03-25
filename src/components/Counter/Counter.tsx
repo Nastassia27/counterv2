@@ -16,20 +16,9 @@ import {useAppSelector} from "../../common/hooks/useAppSelector";
 
 
 const Counter = () => {
-   /* const todolists = useSelector<RootState, Todolist[]>(state => state.todolists)
-    const tasks = useSelector<RootState, TasksState>(state => state.tasks)*/
 
     const counter = useAppSelector(state => state.counter);
     const dispatch = useAppDispatch()
-    /*const [startValue, setStartValue] = React.useState<number>(0);
-    const [startValueFix, setStartValueFix] = React.useState<number>(0);
-
-    const [maxValue, setMaxValue] = React.useState<number>(0);
-    const [maxValueFix, setMaxValueFix] = React.useState<number>(0);
-
-    const [resultValue, setResultValue] = React.useState<number>(0);
-
-    const [isClicked, setIsClicked] = React.useState<boolean>(false);*/
 
    /* useEffect(() => {
         let startValueString = localStorage.getItem('startValue');
