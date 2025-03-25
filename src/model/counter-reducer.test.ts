@@ -53,22 +53,25 @@ test('change start value', () => {
     })
 })
 test('set number', () => {
+
+    let maxNew=startState.maxValue = 5
+    let startNew = startState.startValue = 6
     const endState = counterReducer(startState, setNumbersAC())
-    let maxNew = 5
-    let startNew = 6
+
     expect(endState).toEqual({
         startValue: startNew,
         startValueFix: startNew,
         maxValue: maxNew,
         maxValueFix: maxNew,
-        resultValue: 0,
+        resultValue: startNew,
         isClicked: true
     })
 })
 
 test('increase value', () => {
-    const endState = counterReducer(startState, increaseValueAC())
     const newValue = endState.resultValue + 1
+    const endState = counterReducer(startState, increaseValueAC())
+
     expect(endState).toEqual({
         startValue: 0,
         startValueFix: 0,
@@ -82,9 +85,10 @@ test('increase value', () => {
 })
 
 test('reset value', () => {
+    endState.startValueFix=5
     const endState = counterReducer(startState, resetValueAC())
 
-    endState.startValueFix=5
+
     expect(endState.isClicked).not.toBe(false)
     expect(endState.startValueFix).toBe(5)
     expect(endState.resultValue).toBe(5)
