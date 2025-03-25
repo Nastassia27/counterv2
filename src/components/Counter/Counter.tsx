@@ -2,10 +2,24 @@ import React, {useEffect} from 'react';
 import SetValues from "../SetValues/SetValues";
 import ShowResults from "../ShowResults/ShowResults";
 import './counter.css';
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../../app/store";
+import {
+    changeMaxValueAC,
+    changeStartValueAC,
+    increaseValueAC,
+    resetValueAC,
+    setNumbersAC
+} from "../../model/counter-reducer";
 
 
 const Counter = () => {
-    const [startValue, setStartValue] = React.useState<number>(0);
+   /* const todolists = useSelector<RootState, Todolist[]>(state => state.todolists)
+    const tasks = useSelector<RootState, TasksState>(state => state.tasks)*/
+
+    const counter = useSelector<RootState>(state => state.counter);
+    const dispatch = useDispatch()
+    /*const [startValue, setStartValue] = React.useState<number>(0);
     const [startValueFix, setStartValueFix] = React.useState<number>(0);
 
     const [maxValue, setMaxValue] = React.useState<number>(0);
@@ -13,7 +27,7 @@ const Counter = () => {
 
     const [resultValue, setResultValue] = React.useState<number>(0);
 
-    const [isClicked, setIsClicked] = React.useState<boolean>(false);
+    const [isClicked, setIsClicked] = React.useState<boolean>(false);*/
 
    /* useEffect(() => {
         let startValueString = localStorage.getItem('startValue');
@@ -39,27 +53,21 @@ const Counter = () => {
 
 
     const onChangeMaxValueHandler = (number: number) => {
-        setMaxValue(number);
-        setIsClicked(false)
+      dispatch(changeMaxValueAC({number: number}))
     }
 
     const onChangeStartValueHandler = (number: number) => {
-        setStartValue(number);
-        setIsClicked(false)
+       dispatch(changeStartValueAC({number: number}))
     }
     const setNumbersHandler = () => {
-        setStartValueFix(startValue)
-        setMaxValueFix(maxValue)
-        setResultValue(startValue);
-        setIsClicked(true)
+       dispatch(setNumbersAC())
     }
     const increaseValueHandler = () => {
-        const newValue = resultValue + 1
-        setResultValue(newValue)
+       dispatch(increaseValueAC())
     }
 
     const resetValueHandler = () => {
-        setResultValue(startValueFix)
+       dispatch(resetValueAC())
     }
     return (
         <div className="container">
